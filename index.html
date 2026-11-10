@@ -1,0 +1,146 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Mfundambini Clinic</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #f2f2f2;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        .header {
+            background: #007a4b;
+            color: white;
+            padding: 20px;
+        }
+
+        .box {
+            background: white;
+            margin: 15px;
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        td, th {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background: #007a4b;
+            color: white;
+        }
+
+        .book-btn {
+            background: #ff8c00;
+            color: white;
+            padding: 15px 30px;
+            font-size: 18px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        input, select {
+            width: 90%;
+            padding: 12px;
+            margin: 8px 0;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        #bookingForm {
+            display: none;
+        }
+
+        #thanks {
+            display: none;
+            background: #d4edda;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Mfundambini Clinic</h1>
+        <p>Public Clinic - We Help Our Community</p>
+        <p>Open: Monday to Friday | 07:30 - 16:00</p>
+    </div>
+
+    <div class="box">
+        <h2>No More Long Queues</h2>
+        <p>Check the day for your service, then book before you come.</p>
+        <button class="book-btn" onclick="showForm()">Book Your Visit Now</button>
+
+        <div id="bookingForm">
+            <h3>Book Your Visit</h3>
+            <input type="text" id="name" placeholder="Your Full Name"><br>
+            <input type="text" id="phone" placeholder="Your Phone Number"><br>
+            <select id="service">
+                <option>Choose Service</option>
+                <option>Sick / General</option>
+                <option>HIV Test & Treatment</option>
+                <option>Pregnant Check-ups</option>
+                <option>Baby Clinic - Wednesday ONLY</option>
+                <option>Dentist - Every Friday</option>
+            </select><br>
+            <input type="date" id="date"><br>
+            <button class="book-btn" onclick="submitBooking()">Confirm Booking</button>
+        </div>
+
+        <div id="thanks">
+            <h3>Thank you! ✅</h3>
+            <p id="thanksMsg"></p>
+            <p>Please bring your ID and clinic card. Arrive 30 minutes early.</p>
+        </div>
+    </div>
+
+    <div class="box">
+        <h2>Services & Days</h2>
+        <table>
+            <tr><th>Service</th><th>Days</th></tr>
+            <tr><td>Sick / General</td><td>Mon - Fri</td></tr>
+            <tr><td>HIV Test & Treatment</td><td>Mon - Fri</td></tr>
+            <tr><td>Pregnant Check-ups</td><td>Mon, Tue, Thu</td></tr>
+            <tr><td>Baby Clinic</td><td>Wednesday ONLY</td></tr>
+            <tr><td>Dentist</td><td>Every Friday</td></tr>
+        </table>
+    </div>
+
+    <div class="box">
+        <p>Please bring your ID and clinic card.</p>
+    </div>
+
+    <script>
+function showForm() {
+  document.getElementById("bookingForm").style.display = "block";
+}
+function submitBooking() {
+  var name = document.getElementById("name").value;
+  var service = document.getElementById("service").value;
+  var date = document.getElementById("date").value;
+  if (name == "" || date == "") {
+    alert("Please fill your Name and Date");
+    return;
+  }
+  document.getElementById("bookingForm").style.display = "none";
+  document.getElementById("thanks").style.display = "block";
+  document.getElementById("thanksMsg").innerHTML = "Hello " + name + ", your booking for <b>" + service + "</b> on <b>" + date + "</b> is received!";
+}
+    </script>
+
+</body>
+</html>
